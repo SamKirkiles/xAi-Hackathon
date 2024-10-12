@@ -4,6 +4,7 @@ import os
 import json
 import requests
 import post_consumer
+from cli_bot import start_chat
 import rich
 from rich.console import Console
 from rich.panel import Panel
@@ -15,6 +16,7 @@ from time import sleep
 
 if __name__ == "__main__":
     # Header Panel
+    console = Console()
     console.print(
         Panel(
             Text(
@@ -51,13 +53,8 @@ if __name__ == "__main__":
             )
         )
 
-        api_key = os.getenv("XAI_API_KEY")
-        if not api_key:
-            print("API key not found in Secrets")
-            exit()
+        start_chat()
 
-        # Initialize the console
-        console = Console()
 
     elif option == "2":
         # Start the consumer service
