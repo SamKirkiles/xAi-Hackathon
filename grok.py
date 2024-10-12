@@ -36,8 +36,8 @@ def startchat():
     print("Thank you for using the customer service bot!")
 
 
-def send_message(message):
-    
+def send_grok_message(message):
+
     api_key = os.getenv("XAI_API_KEY")
     if not api_key:
         print("API key not found in Secrets")
@@ -52,7 +52,6 @@ def send_message(message):
         full_response += token
     
     return full_response
-
 
 
 def create_chat_completion(api_key, messages):
