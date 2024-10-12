@@ -4,7 +4,7 @@ import os
 import json
 import requests
 import post_consumer
-import clibot
+import grok
 import rich
 from rich.console import Console
 from rich.panel import Panel
@@ -53,7 +53,7 @@ if __name__ == "__main__":
             )
         )
 
-        clibot.startchat()
+        grok.startchat()
 
 
     elif option == "2":
