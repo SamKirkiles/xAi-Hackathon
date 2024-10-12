@@ -4,7 +4,7 @@ import os
 import json
 import requests
 import post_consumer
-from cli_bot import start_chat
+import clibot
 import rich
 from rich.console import Console
 from rich.panel import Panel
@@ -36,7 +36,7 @@ if __name__ == "__main__":
     menu_table.add_column("Description", justify="center", style="bold yellow")
 
     menu_table.add_row("1", "Give Product Feedback")
-    menu_table.add_row("2", "(Advanced) Start Backend")
+    menu_table.add_row("2", "(Advanced) Start Backend Tweet Consumer")
     menu_table.add_row("3", "Exit")
 
     console.print(menu_table)
@@ -53,7 +53,7 @@ if __name__ == "__main__":
             )
         )
 
-        start_chat()
+        clibot.startchat()
 
 
     elif option == "2":
