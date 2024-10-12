@@ -36,6 +36,25 @@ def startchat():
     print("Thank you for using the customer service bot!")
 
 
+def send_message(message):
+    
+    api_key = os.getenv("XAI_API_KEY")
+    if not api_key:
+        print("API key not found in Secrets")
+        exit()
+
+    conversation = [{"role": "system", "content": "You are who you are."}]
+
+    conversation.append({"role": "user", "content": message})
+
+    full_response = ""
+    for token in create_chat_completion(api_key, conversation):
+        full_response += token
+    
+    return full_response
+
+
+
 def create_chat_completion(api_key, messages):
     url = "https://api.x.ai/v1/chat/completions"
     headers = {
