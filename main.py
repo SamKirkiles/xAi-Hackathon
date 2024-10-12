@@ -106,7 +106,7 @@ if __name__ == "__main__":
     print("Enter an empty message to quit.\n")
 
     while True:
-        user_input = input("Hello, please give us some feedback on your product: ")
+        user_input = input("Hello, please give us some feedback on our product: ")
         user_input += "Please give the output in JSON format with the format {message:}"
         print("")
 
