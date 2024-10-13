@@ -142,12 +142,7 @@ def unread_emails():
                         
                         body = get_email_body(msg)
 
-                        message_to_grok = "Based on this customer response: {}. Give me these fields user_id, product_id, feedback, feedback_date in that order separated by commas".format(body)
-                        grok_response = grok.send_grok_message(message_to_grok)
-                        inputs = grok_response.split(',')
-                        print("inputs: {}".format(inputs))
-                        add_feedback(inputs[0], inputs[1], inputs[2], inputs[3])
-                        get_feedback()
+                        add_review(body)
 
                         start_ = "Here is the customer response you received. Either create a response message or if you think that the conversation should finish reply to me with the word done"
                         message_to_grok = "{}: Subject: {} From: {} Body: {}. Whatever you respond with, will be sent so don't include stuff like [Your Name]".format(start_, subject, from_, body)
@@ -159,6 +154,14 @@ def unread_emails():
         pass
     finally:
         mail.logout()
+
+def add_review(body):
+    message_to_grok = "Based on this customer response: {}. Give me these fields user_id, product_id, feedback, feedback_date in that order separated by commas".format(body)
+    grok_response = grok.send_grok_message(message_to_grok)
+    inputs = grok_response.split(',')
+    print("inputs: {}".format(inputs))
+    add_feedback(inputs[0], inputs[1], inputs[2], inputs[3])
+    get_feedback()
 
 def monthly_email():
     sender_email = "versonium@gmail.com"
