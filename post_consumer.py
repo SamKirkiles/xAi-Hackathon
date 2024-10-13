@@ -19,7 +19,7 @@ def start_poll():
         # Get the time 1 minute ago in ISO 8601 format
         time_1_minute_ago_rfc3339 = time_1_minute_ago.strftime('%Y-%m-%dT%H:%M:%SZ')
 
-        bearer_token = ""
+        bearer_token = "AAAAAAAAAAAAAAAAAAAAAPmCwQEAAAAAzTfww80fWbdW%2FdEo3KJwYU%2Fpy3o%3DR3WRkj42qa7I1mwN74s41U9KM8NF2mHUJx5RT2NOISiZmcMvxS"
 
         # Twitter API endpoint
         url = "https://api.twitter.com/2/users/1845203589314273280/mentions?start_time="+str(time_1_minute_ago_rfc3339)
@@ -36,11 +36,13 @@ def start_poll():
         if response.status_code == 200:
             # Print the JSON response if successful
             res = response.json()
-            print(grok.check_review(str(res)))
+            if grok.check_review(str(res)):
+                # We have a valid review
+                print("Review Found on X: ", res)
 
         else:
             # Print an error message if the request fails
             print(f"Error: {response.status_code}")
             print(response.text)
 
-        sleep(45)
+        sleep(10)
