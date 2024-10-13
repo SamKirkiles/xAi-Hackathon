@@ -1,5 +1,6 @@
 import time
 from time import sleep
+import grok
 import requests 
 from datetime import datetime, timezone, timedelta
 
@@ -34,7 +35,8 @@ def start_poll():
         # Check the response
         if response.status_code == 200:
             # Print the JSON response if successful
-            print(response.json())
+            res = response.json()
+            print(grok.check_review(str(res)))
 
         else:
             # Print an error message if the request fails
@@ -42,4 +44,3 @@ def start_poll():
             print(response.text)
 
         sleep(45)
-        

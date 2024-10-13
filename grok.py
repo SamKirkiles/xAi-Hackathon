@@ -84,3 +84,15 @@ def create_chat_completion(api_key, messages):
 
     conversation = [{"role": "system", "content": "You are who you are."}]
 
+
+# Return a boolean if a message is a valid product review or not
+def check_review(review):
+
+    message = send_grok_message("Return 1 if this is a valid product review and 0 otherwise. Do not output any text other than 0 or 1. The review:" + review)
+
+    if message == "1":
+        return True
+    
+    return False
+
+

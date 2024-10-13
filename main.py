@@ -55,11 +55,12 @@ if __name__ == "__main__":
 
         grok.startchat()
 
-
     elif option == "2":
-        # Start the consumer service
+        # Start polling twitter for mentions of our bot
         post_consumer.start_poll()
+
     elif option == "3":
+        
         console.print(
             Panel(
                 "[magenta]Thank you for using the service. Goodbye![/]",
